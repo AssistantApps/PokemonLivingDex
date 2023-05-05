@@ -1,0 +1,32 @@
+.hide-scrollbar {
+    border-right: 5px solid rgba(0, 0, 0, 0.2);
+    transition: all 500ms ease-in-out;
+    z-index: 1000;
+
+    .content {
+        transition: all 250ms ease-in-out;
+        transition-delay: 0;
+
+        .version {
+            position: absolute;
+            bottom: 1em;
+            right: 0;
+        }
+    }
+
+    &.expand .content {
+        transition-delay: 250ms;
+    }
+
+    .drawer-icon {
+        position: absolute;
+        top: 1em;
+        right: -1.5em;
+        transition: all 500ms ease-in-out;
+        box-shadow: none;
+
+        &.expand {
+            transform: rotate(180deg);
+        }
+    }
+}

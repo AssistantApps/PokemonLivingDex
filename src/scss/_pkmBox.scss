@@ -1,0 +1,83 @@
+#find-pokemon,
+#latest-game {
+    background-color: var(--hope-colors-background);
+    border-radius: 0em 0 0em 0.5em;
+    padding: 0.5em;
+    min-width: 500px;
+    z-index: 1001;
+
+    &.sticky {
+        // position fixed on scroll from .sticky class
+        top: 0em;
+        right: 0em;
+    }
+}
+
+.pkm-box {
+    min-height: 350px;
+
+    .header {
+        position: relative;
+
+        .extra {
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+
+            &.complete {
+                color: rgba(255, 255, 255, 0.1);
+            }
+        }
+    }
+
+    .content {
+        .box-item {
+            position: relative;
+            border-radius: 10px;
+            opacity: 0.3;
+            filter: grayscale(100%);
+            transition: opacity 150ms ease-in-out;
+
+            &.owned {
+                opacity: 1;
+                filter: unset;
+            }
+
+            &.shiny {
+                background-image: url(/assets/img/sparkle.png);
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+        }
+    }
+}
+
+.finding {
+    .owned {
+        animation: finding-pulse-anim 1s ease-in-out infinite;
+    }
+}
+
+.pokemon-sprite-item {
+    background-image: url(/assets/img/pokemon/0000.png);
+}
+
+#latest-game button {
+    padding: 0.5em 1em;
+
+    .hope-flex {
+        flex-wrap: wrap;
+    }
+}
+
+@keyframes finding-pulse-anim {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.125);
+    }
+}

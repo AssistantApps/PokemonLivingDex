@@ -1,0 +1,58 @@
+body {
+    @media only screen and (max-width: 1279px) {
+        //
+    }
+
+    @media screen and (max-width: 980px) {
+        //
+    }
+
+    @media only screen and (max-width: 768px) {
+        //
+        #find-pokemon,
+        #latest-game {
+            min-width: unset;
+            padding: unset;
+
+            &.sticky {
+                padding: 1em;
+            }
+        }
+
+        .controls {
+            flex-direction: column;
+        }
+
+        .latest-game button {
+            padding: 0.5em;
+
+            img {
+                margin: 0.33em;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 500px) {
+        //
+        .hide-scrollbar.close {
+            width: 1em;
+        }
+
+        #find-pokemon,
+        #latest-game {
+            width: 100%;
+        }
+    }
+}
+
+.hidden-in-desktop {
+    @media screen and (min-width: 980px) {
+        display: none !important;
+    }
+}
+
+.hidden-in-mobile {
+    @media screen and (max-width: 980px) {
+        display: none !important;
+    }
+}

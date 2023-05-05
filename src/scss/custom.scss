@@ -1,0 +1,72 @@
+@import "var";
+@import "misc";
+@import "pkmBox";
+@import "sidebar";
+@import "draggable";
+@import "scrollbar";
+@import "sweetalertDark";
+@import "breakpoint";
+
+:root {
+    --bg-color: #151718;
+    --bg-hover-color: #0b0b0c;
+    --line-gray-color: #8c9297;
+    --content-text: $primaryColour;
+    --link-color: $linkColour;
+    --error-text-color: #8b0000;
+    --text-max-lines: none;
+}
+
+html body {
+    font-family: "Quicksand", sans-serif;
+
+    ::selection {
+        background: $highlightColour;
+        color: white;
+    }
+
+    ::-moz-selection {
+        background: $highlightColour;
+        color: white;
+    }
+
+    ::-webkit-calendar-picker-indicator {
+        filter: invert(100%);
+    }
+
+    a {
+        color: $linkColour;
+    }
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.max-lines-1 {
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+}
+
+.pos-abs {
+    position: absolute;
+
+    &.top {
+        top: 0;
+    }
+}
+
+.sticky {
+    position: fixed;
+}
