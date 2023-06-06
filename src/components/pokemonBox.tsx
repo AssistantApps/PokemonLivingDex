@@ -1,5 +1,5 @@
 import { Box, Grid, Heading, Text } from "@hope-ui/solid";
-import classNames from "classNames";
+import classNames from "classnames";
 import { Component, For, Show } from "solid-js";
 
 import { LivingDexMode } from "../constants/enum/livingDexMode";

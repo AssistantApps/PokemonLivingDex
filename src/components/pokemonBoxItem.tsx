@@ -1,5 +1,5 @@
 import { Box, Image } from "@hope-ui/solid";
-import classNames from "classNames";
+import classNames from "classnames";
 import { Component, Show, createEffect, createSignal } from "solid-js";
 
 import { LivingDexMode } from "../constants/enum/livingDexMode";
