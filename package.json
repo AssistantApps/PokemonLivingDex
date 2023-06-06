@@ -1,6 +1,6 @@
 {
   "name": "assistantapps-pokemon-living-dex",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "scripts": {
     "start": "vite",
