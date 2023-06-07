@@ -58,6 +58,7 @@ export const Sidebar: Component = () => {
                     <VStack alignItems="flex-start" spacing="$1" mb="$6">
                         <SidebarNavLink href={routes.actualHome}>Home</SidebarNavLink>
                         <SidebarNavLink href={externalUrl.assistantapps} target="_blank" rel="noopener noreferrer">AssistantApps Homepage <OpenInNewIcon /></SidebarNavLink>
+                        <SidebarNavLink href={externalUrl.patreon} target="_blank" rel="noopener noreferrer">Patreon <OpenInNewIcon /></SidebarNavLink>
                         <SidebarNavLink href={externalUrl.assistantappsDiscord} target="_blank" rel="noopener noreferrer">Discord <OpenInNewIcon /></SidebarNavLink>
                         <SidebarNavLink href={externalUrl.assistantappsMastodon} target="_blank" rel="noopener noreferrer">Mastodon <OpenInNewIcon /></SidebarNavLink>
                         <SidebarNavLink href={externalUrl.githubRepo} target="_blank" rel="noopener noreferrer">Github Repository <OpenInNewIcon /></SidebarNavLink>

@@ -4,6 +4,7 @@ import { StateService } from "../stateService";
 export interface IPokeDexState {
     owned: Array<string>;
     shiny: Array<string>;
+    games: Array<string>;
 }
 
 const handleEmptySection = (state: IState) => {
@@ -23,5 +24,12 @@ export const getShiny = (stateService: StateService): [state: () => Array<string
     (shiny: Array<string>) => stateService.setState(s => {
         handleEmptySection(s);
         s.pokedex.shiny = shiny;
+    }),
+];
+export const getGames = (stateService: StateService): [state: () => Array<string>, setState: (state: Array<string>) => void] => [
+    () => stateService.getState().pokedex?.games ?? initialState.pokedex.games,
+    (games: Array<string>) => stateService.setState(s => {
+        handleEmptySection(s);
+        s.pokedex.games = games;
     }),
 ];

@@ -1,0 +1,71 @@
+// Placeholder selector
+$transitionTime: 250ms;
+
+.auto-complete-dropdown {
+    position: relative;
+
+    .auto-complete-dropdown-list {
+        position: absolute;
+        top: 120%;
+        left: 0;
+        right: 0;
+        max-height: 50vh;
+        background-color: var(--hope-colors-background);
+        border-radius: var(--hope-radii-sm);
+        overflow-y: auto;
+
+        opacity: 0;
+        border: unset;
+        transform: scaleY(0);
+        transform-origin: top;
+
+        transition: opacity $transitionTime ease-in-out, border $transitionTime ease-in-out,
+            transform $transitionTime ease-in-out;
+
+        &.is-open {
+            height: unset;
+            opacity: unset;
+            border: 1px solid var(--hope-colors-neutral7);
+            transform: scaleY(1);
+        }
+
+        li {
+            display: flex;
+            transition: background 0.35s ease;
+            z-index: 1000;
+            cursor: pointer;
+
+            &:first-child {
+                padding-top: var(--hope-space-1);
+            }
+
+            &:last-child {
+                padding-top: var(--hope-space-1);
+            }
+
+            &:focus,
+            &:hover {
+                background-color: var(--hope-colors-neutral4);
+            }
+
+            .hope-text {
+                flex-grow: 1;
+                display: inline-flex;
+                align-items: center;
+                margin-left: 0.5em;
+            }
+        }
+    }
+
+    .icon {
+        display: inline-block;
+        position: absolute;
+        top: 0.5em;
+        right: 0.5em;
+        width: 1em;
+        height: 1em;
+        color: var(--hope-colors-neutral11);
+        font-size: 1.25em;
+        pointer-events: none;
+    }
+}

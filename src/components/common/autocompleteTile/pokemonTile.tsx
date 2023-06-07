@@ -1,4 +1,4 @@
-import { Box, SelectOption, SelectOptionIndicator, SelectOptionText } from "@hope-ui/solid";
+import { Box, Text } from "@hope-ui/solid";
 import { Component } from "solid-js";
 import { IMeta } from "../../../contracts/meta";
 import { PokemonSpriteImage } from "../../pokemonSpriteImage";
@@ -13,8 +13,9 @@ export const PokemonAutocompleteTile: (meta: IMeta) => Component<IAutocompleteOp
     const row = Math.floor(idInt / numCols);
 
     return (
-        <SelectOption value={props.value}>
+        <>
             <Box
+                class="tile-img"
                 borderRadius={5}
                 ml="0.5em"
             >
@@ -24,8 +25,7 @@ export const PokemonAutocompleteTile: (meta: IMeta) => Component<IAutocompleteOp
                     row={row}
                 />
             </Box>
-            <SelectOptionText>{props.title}</SelectOptionText>
-            <SelectOptionIndicator />
-        </SelectOption>
+            <Text>{props.title}</Text>
+        </>
     );
 }
