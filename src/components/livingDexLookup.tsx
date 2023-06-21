@@ -104,6 +104,10 @@ export const LivingDexLookup: Component = () => {
             const allPokeData: Array<IPokeDexByRegion> = await allPokeResp.json();
 
             setPokedexByRegion(allPokeData);
+
+            if (games().length == 0) {
+                setGames(allPokeData.map(pd => pd.game));
+            }
         } catch (e) {
             setPokedexByRegion([]);
         }
@@ -171,11 +175,7 @@ export const LivingDexLookup: Component = () => {
                         />
                     </Flex>
                     <Spacer flex={1} />
-                    <Show when={mode() == LivingDexMode.tracking}>
-                        <Spacer flex={1} />
-                        <Spacer flex={1} />
-                    </Show>
-                    <Show when={mode() == LivingDexMode.finding}>
+                    <Show when={mode() == LivingDexMode.tracking || mode() == LivingDexMode.finding}>
                         <Spacer flex={1} />
                         <Box id={findPokemonDropdownId} flex={2} maxWidth="500px">
                             <HStack>
@@ -287,7 +287,7 @@ export const LivingDexLookup: Component = () => {
                     </Show>
                 </Flex>
                 <Box p="1em 1em 8em 1em" class={classNames('noselect', LivingDexMode[mode()])}>
-                    <SimpleGrid minChildWidth="300px" gap="1em">
+                    <SimpleGrid minChildWidth="310px" gap="1em">
                         <For each={pokemonByGame()}>
                             {(pkmByGame) => (
                                 <PokemonBox

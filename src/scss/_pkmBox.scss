@@ -39,7 +39,8 @@
             filter: grayscale(100%);
             transition: opacity 150ms ease-in-out;
 
-            &.owned {
+            &.owned,
+            &.highlighted {
                 opacity: 1;
                 filter: unset;
             }
@@ -49,13 +50,11 @@
                 background-repeat: no-repeat;
                 background-size: contain;
             }
-        }
-    }
-}
 
-.finding {
-    .owned {
-        animation: finding-pulse-anim 1s ease-in-out infinite;
+            &.highlighted {
+                animation: finding-pulse-anim 1s ease-in-out infinite;
+            }
+        }
     }
 }
 
@@ -78,6 +77,6 @@
     }
 
     50% {
-        transform: scale(1.125);
+        transform: scale(1.2);
     }
 }

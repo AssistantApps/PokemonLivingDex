@@ -28,20 +28,25 @@ export const PokemonBoxItem: Component<IProps> = (props: IProps) => {
 
     const [isOwned, setIsOwned] = createSignal<boolean>(false);
     const [isShiny, setIsShiny] = createSignal<boolean>(false);
+    const [isHighlighted, setIsHighlighted] = createSignal<boolean>(false);
     const [imgUrl, setImgUrl] = createSignal<string | undefined>(defaultImgUrl);
 
     createEffect(() => {
         switch (props.mode) {
             case LivingDexMode.finding:
-                setIsOwned(props.id == props.pokemonId);
+                setIsHighlighted(props.id == props.pokemonId);
+                setIsOwned(false);
                 setIsShiny(false);
                 break;
             case LivingDexMode.tracking:
+                setIsHighlighted(props.id == props.pokemonId);
                 setIsOwned(props.owned.includes(props.id));
                 setIsShiny(props.shiny.includes(props.id));
                 break;
             case LivingDexMode.latestGame:
+                setIsHighlighted(false);
                 setIsOwned(true);
+                setIsShiny(false);
                 break;
         }
 
@@ -102,6 +107,7 @@ export const PokemonBoxItem: Component<IProps> = (props: IProps) => {
             onClick={onClick(props.id)}
             onContextMenu={onContextMenu(props.id)}
             class={classNames('box-item', {
+                'highlighted': isHighlighted(),
                 'owned': isOwned(),
                 'shiny': isShiny(),
             })}
