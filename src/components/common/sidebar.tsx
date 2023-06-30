@@ -1,7 +1,8 @@
 import { Box, Center, Divider, ElementType, Flex, Heading, IconButton, Text, TextProps, VStack } from '@hope-ui/solid';
 import { Component } from 'solid-js';
-
 import { Link } from '@solidjs/router';
+
+import packageVersion from '../../../package.json';
 import { externalUrl } from '../../constants/external';
 import { routes } from '../../constants/route';
 import { getSidebarIsOpen } from '../../services/store/sections/sidebarState';
@@ -46,12 +47,13 @@ export const Sidebar: Component = () => {
                                 <CustomImage src="/assets/img/logo.png" alt="logo" maxHeight="75px" />
                                 <Box m="$2" />
                                 <Center>
-                                    <Heading>Very Simple<br />living dex</Heading>
+                                    <Heading>Simple<br />living dex</Heading>
                                 </Center>
                             </Flex>
                             <Box m={20} />
                             <Divider />
                         </Link>
+                        <Text class='version'>{packageVersion.version}</Text>
                     </Box>
                     <Box m={20} />
                     <SidebarTitle>Quick links</SidebarTitle>

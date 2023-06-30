@@ -150,8 +150,11 @@ export const LivingDexLookup: Component = () => {
 
         if (pokeDetails == null) return;
 
-        setSelectedPokemon(pokeDetails.value);
-        setSelectedPokemonName(pokeDetails.title);
+        if (mode() != LivingDexMode.tracking) {
+            setSelectedPokemon(pokeDetails.value);
+            setSelectedPokemonName(pokeDetails.title);
+        }
+
         setInfoBoxSelectedPokedexs(pokeDexi);
         onOpen();
     }
@@ -255,7 +258,7 @@ export const LivingDexLookup: Component = () => {
                             </HStack>
                         </Box>
                     </Show>
-                    <Show when={mode() == LivingDexMode.latestGame}>
+                    <Show when={mode() == LivingDexMode.latestGame || mode() == LivingDexMode.firstGame}>
                         <Spacer flex={1} />
                         <Flex id={latestGameDropdownId} flex={2} justifyContent="center" flexDirection="column">
                             <Dropdown

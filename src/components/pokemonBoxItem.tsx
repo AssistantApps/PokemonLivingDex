@@ -44,6 +44,7 @@ export const PokemonBoxItem: Component<IProps> = (props: IProps) => {
                 setIsShiny(props.shiny.includes(props.id));
                 break;
             case LivingDexMode.latestGame:
+            case LivingDexMode.firstGame:
                 setIsHighlighted(false);
                 setIsOwned(true);
                 setIsShiny(false);
@@ -56,6 +57,7 @@ export const PokemonBoxItem: Component<IProps> = (props: IProps) => {
                 setImgUrl(undefined);
                 break;
             case LivingDexMode.latestGame:
+            case LivingDexMode.firstGame:
                 const pokeDexi = props.pokedexByRegion
                     .filter(pd => props.selectedPokedexes.includes(pd.game))
                     .filter(pd => pd.pokemon.includes(props.id));
@@ -64,8 +66,14 @@ export const PokemonBoxItem: Component<IProps> = (props: IProps) => {
                     return;
                 }
 
-                const last = pokeDexi.slice(-1);
-                setImgUrl(`/assets/img/game/${last[0].icon}.png`);
+                let selectedOpt: Array<IPokeDexByRegion> = [];
+                if (props.mode == LivingDexMode.firstGame) {
+                    selectedOpt = pokeDexi.slice(0, 1);
+                }
+                if (props.mode == LivingDexMode.latestGame) {
+                    selectedOpt = pokeDexi.slice(-1);
+                }
+                setImgUrl(`/assets/img/game/${selectedOpt[0].icon}.png`);
                 break;
         }
     });
@@ -90,12 +98,12 @@ export const PokemonBoxItem: Component<IProps> = (props: IProps) => {
 
     const onContextMenu = (id: string) => (e: any) => {
         preventDefault(e);
-        if (props.mode == LivingDexMode.finding) {
+        if (props.mode == LivingDexMode.finding || props.mode == LivingDexMode.tracking) {
             props.showInfoBox(id);
         }
-        if (props.mode == LivingDexMode.tracking) {
-            props.addOrRemoveFromShiny([id]);
-        }
+        // if (props.mode == LivingDexMode.tracking) {
+        //     props.addOrRemoveFromShiny([id]);
+        // }
         if (props.mode == LivingDexMode.latestGame) {
             window.open(getBulbaUrl(props.name), "_blank");
         }
