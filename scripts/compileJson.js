@@ -10,6 +10,14 @@ const capitalizeFirstLetter = (orig) => {
 }
 
 const getAllPokemon = async () => {
+    const pokemonJson = path.join(__dirname, '../public/assets/json/tempAllPokemon.json');
+    if (fs.existsSync(pokemonJson)) {
+        console.log('loading details per Pokemon from file');
+        const rawdata = fs.readFileSync(pokemonJson);
+        const data = JSON.parse(rawdata);
+        return data;
+    }
+
     const pokemonApiAllUrl = 'https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0';
     const pokemonApiResult = await fetch(pokemonApiAllUrl);
     const pokemonApiData = await pokemonApiResult.json();
@@ -41,12 +49,24 @@ const getAllPokemon = async () => {
         } else {
             pokemonLookup[pokeId] = [dataToAdd];
         }
+        process.stdout.write(Object.keys(pokemonLookup).length + ` items fetched of approx. ${pokemonApiData.results.length}\r`);
     }
+
+    console.log('');
+    fs.writeFileSync(pokemonJson, JSON.stringify(pokemonLookup, null, 2));
 
     return pokemonLookup;
 }
 
 const getAllGameDetails = async () => {
+    const gameDetailsJson = path.join(__dirname, '../public/assets/json/tempGameDetails.json');
+    if (fs.existsSync(gameDetailsJson)) {
+        console.log('loading details per Generation from file');
+        const rawdata = fs.readFileSync(gameDetailsJson);
+        const data = JSON.parse(rawdata);
+        return data;
+    }
+
     const pokemonApiAllUrl = 'https://pokeapi.co/api/v2/generation?limit=100000&offset=0';
     const pokemonApiResult = await fetch(pokemonApiAllUrl);
     const pokemonApiData = await pokemonApiResult.json();
@@ -69,7 +89,11 @@ const getAllGameDetails = async () => {
         generations.push(dataToAdd);
     }
 
+    process.stdout.write(generations.length + " generations fetched\r");
+    console.log('');
+
     const orderedGenerations = generations.sort((a, b) => (a.genId > b.genId) ? 1 : -1);
+    fs.writeFileSync(gameDetailsJson, JSON.stringify(orderedGenerations, null, 2));
     return orderedGenerations;
 }
 
@@ -126,8 +150,6 @@ const joinPokemonDataIntoOneFile = async () => {
         })
     }
 
-    console.log('data combined');
-
     await combinePokemonImagesIntoSingleSprite(combined, numCol);
 
     const orderedCombined = combined.sort((a, b) => (a.id > b.id) ? 1 : -1);
@@ -155,7 +177,7 @@ const combinePokemonImagesIntoSingleSprite = async (combined, numCol) => {
     const pokemonImgPath = path.join(__dirname, '../public/assets/img/pokemon');
     const outputImg = path.join(pokemonImgPath, '0000.png');
 
-    console.log('Comment this out to generate new image');
+    console.log('skipping the generation of a new single sprite');
     return;
 
     if (fs.existsSync(outputImg)) {
@@ -166,7 +188,9 @@ const combinePokemonImagesIntoSingleSprite = async (combined, numCol) => {
     const canvas = createCanvas(widthInPx, widthInPx);
     const ctx = canvas.getContext('2d');
 
+    console.log('number of games', combined.length);
     for (const combo of combined) {
+        console.log(`\t${combo.name}`, combo.pokemon.length);
         for (const pokemonDetail of combo.pokemon) {
             // const response = await fetch(pokemonDetail.image);
             // const blob = await response.blob();
@@ -174,7 +198,9 @@ const combinePokemonImagesIntoSingleSprite = async (combined, numCol) => {
             // const buffer = Buffer.from(arrayBuffer);
             // await fs.writeFileSync(tempImg, buffer);
 
-            console.log(pokemonDetail.id)
+            if (pokemonDetail.image == null) {
+                pokemonDetail.image = path.join(__dirname, '../public/assets/img/pokeball-loader.png');
+            }
             // await fs.writeFileSync(tempImg.replace('temp', pokemonDetail.id), buffer);
 
             const image = await loadImage(pokemonDetail.image);
@@ -188,10 +214,13 @@ const combinePokemonImagesIntoSingleSprite = async (combined, numCol) => {
         }
     }
 
-    const buffer = canvas.toBuffer('image/png');
-    fs.writeFileSync(outputImg, buffer);
-
-    console.log('spritemap created');
+    try {
+        const buffer = canvas.toBuffer('image/png');
+        fs.writeFileSync(outputImg, buffer);
+        console.log('spritemap created');
+    } catch (e) {
+        console.error('Unable to write single aprite', e);
+    }
 }
 
 joinPokemonDataIntoOneFile();

@@ -33,7 +33,9 @@
 
     .content {
         .box-item {
+            display: flex;
             position: relative;
+            justify-content: center;
             border-radius: 10px;
             opacity: 0.3;
             filter: grayscale(100%);

@@ -1,2 +1,4 @@
 node_modules
 dist
+public/assets/json/tempGameDetails.json
+public/assets/json/tempAllPokemon.json
