@@ -9140,6 +9140,62 @@
         "col": 18,
         "boxCol": 3,
         "boxRow": 3
+      },
+      {
+        "id": "1011",
+        "name": "Dipplin",
+        "row": 31,
+        "col": 19,
+        "boxCol": 4,
+        "boxRow": 3
+      },
+      {
+        "id": "1012",
+        "name": "Poltchageist",
+        "row": 31,
+        "col": 20,
+        "boxCol": 5,
+        "boxRow": 3
+      },
+      {
+        "id": "1013",
+        "name": "Sinistcha",
+        "row": 31,
+        "col": 21,
+        "boxCol": 6,
+        "boxRow": 3
+      },
+      {
+        "id": "1014",
+        "name": "Okidogi",
+        "row": 31,
+        "col": 22,
+        "boxCol": 1,
+        "boxRow": 4
+      },
+      {
+        "id": "1015",
+        "name": "Munkidori",
+        "row": 31,
+        "col": 23,
+        "boxCol": 2,
+        "boxRow": 4
+      },
+      {
+        "id": "1016",
+        "name": "Fezandipiti",
+        "row": 31,
+        "col": 24,
+        "boxCol": 3,
+        "boxRow": 4
+      },
+      {
+        "id": "1017",
+        "name": "Ogerpon",
+        "row": 31,
+        "col": 25,
+        "boxCol": 4,
+        "boxRow": 4
       }
     ]
   }
