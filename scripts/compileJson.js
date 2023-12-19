@@ -202,15 +202,19 @@ const combinePokemonImagesIntoSingleSprite = async (combined, numCol) => {
                 pokemonDetail.image = path.join(__dirname, '../public/assets/img/pokeball-loader.png');
             }
             // await fs.writeFileSync(tempImg.replace('temp', pokemonDetail.id), buffer);
-
-            const image = await loadImage(pokemonDetail.image);
-            ctx.drawImage(
-                image,
-                pokemonDetail.col * pokemonSpriteSize,
-                pokemonDetail.row * pokemonSpriteSize,
-                pokemonSpriteSize,
-                pokemonSpriteSize
-            );
+            try {
+                const image = await loadImage(pokemonDetail.image);
+                ctx.drawImage(
+                    image,
+                    pokemonDetail.col * pokemonSpriteSize,
+                    pokemonDetail.row * pokemonSpriteSize,
+                    pokemonSpriteSize,
+                    pokemonSpriteSize
+                );
+            }
+            catch (e) {
+                console.error(`Unable to fetch sprite for ${pokemonDetail.image}`, e);
+            }
         }
     }
 
