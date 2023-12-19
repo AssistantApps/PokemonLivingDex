@@ -9144,6 +9144,7 @@
       {
         "id": "1011",
         "name": "Dipplin",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1011.png",
         "row": 31,
         "col": 19,
         "boxCol": 4,
@@ -9152,6 +9153,7 @@
       {
         "id": "1012",
         "name": "Poltchageist",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1012.png",
         "row": 31,
         "col": 20,
         "boxCol": 5,
@@ -9160,6 +9162,7 @@
       {
         "id": "1013",
         "name": "Sinistcha",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1013.png",
         "row": 31,
         "col": 21,
         "boxCol": 6,
@@ -9168,6 +9171,7 @@
       {
         "id": "1014",
         "name": "Okidogi",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1014.png",
         "row": 31,
         "col": 22,
         "boxCol": 1,
@@ -9176,6 +9180,7 @@
       {
         "id": "1015",
         "name": "Munkidori",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1015.png",
         "row": 31,
         "col": 23,
         "boxCol": 2,
@@ -9184,6 +9189,7 @@
       {
         "id": "1016",
         "name": "Fezandipiti",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1016.png",
         "row": 31,
         "col": 24,
         "boxCol": 3,
@@ -9192,6 +9198,7 @@
       {
         "id": "1017",
         "name": "Ogerpon",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1017.png",
         "row": 31,
         "col": 25,
         "boxCol": 4,

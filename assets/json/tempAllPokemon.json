@@ -79,43 +79,50 @@
   "1011": [
     {
       "id": "1011",
-      "name": "Dipplin"
+      "name": "Dipplin",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1011.png"
     }
   ],
   "1012": [
     {
       "id": "1012",
-      "name": "Poltchageist"
+      "name": "Poltchageist",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1012.png"
     }
   ],
   "1013": [
     {
       "id": "1013",
-      "name": "Sinistcha"
+      "name": "Sinistcha",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1013.png"
     }
   ],
   "1014": [
     {
       "id": "1014",
-      "name": "Okidogi"
+      "name": "Okidogi",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1014.png"
     }
   ],
   "1015": [
     {
       "id": "1015",
-      "name": "Munkidori"
+      "name": "Munkidori",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1015.png"
     }
   ],
   "1016": [
     {
       "id": "1016",
-      "name": "Fezandipiti"
+      "name": "Fezandipiti",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1016.png"
     }
   ],
   "1017": [
     {
       "id": "1017",
-      "name": "Ogerpon"
+      "name": "Ogerpon",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1017.png"
     }
   ],
   "10001": [
@@ -1674,25 +1681,29 @@
   "10272": [
     {
       "id": "10272",
-      "name": "Ursaluna-Bloodmoon"
+      "name": "Ursaluna-Bloodmoon",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10272.png"
     }
   ],
   "10273": [
     {
       "id": "10273",
-      "name": "Ogerpon-Wellspring-Mask"
+      "name": "Ogerpon-Wellspring-Mask",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10273.png"
     }
   ],
   "10274": [
     {
       "id": "10274",
-      "name": "Ogerpon-Hearthflame-Mask"
+      "name": "Ogerpon-Hearthflame-Mask",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10274.png"
     }
   ],
   "10275": [
     {
       "id": "10275",
-      "name": "Ogerpon-Cornerstone-Mask"
+      "name": "Ogerpon-Cornerstone-Mask",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10275.png"
     }
   ],
   "0001": [
