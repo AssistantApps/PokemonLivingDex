@@ -3,6 +3,7 @@ const fs = require('fs');
 const { createCanvas, loadImage } = require('canvas');
 
 const pokemonSpriteSize = 50;
+const pokeApiUrl = 'https://staging.pokeapi.co/api/v2';
 
 const capitalizeFirstLetter = (orig) => {
     if (orig.length == 0) return orig;
@@ -18,7 +19,7 @@ const getAllPokemon = async () => {
         return data;
     }
 
-    const pokemonApiAllUrl = 'https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0';
+    const pokemonApiAllUrl = `${pokeApiUrl}/pokemon?limit=100000&offset=0`;
     const pokemonApiResult = await fetch(pokemonApiAllUrl);
     const pokemonApiData = await pokemonApiResult.json();
 
@@ -67,7 +68,7 @@ const getAllGameDetails = async () => {
         return data;
     }
 
-    const pokemonApiAllUrl = 'https://pokeapi.co/api/v2/generation?limit=100000&offset=0';
+    const pokemonApiAllUrl = `${pokeApiUrl}/generation?limit=100000&offset=0`;
     const pokemonApiResult = await fetch(pokemonApiAllUrl);
     const pokemonApiData = await pokemonApiResult.json();
 
@@ -82,7 +83,7 @@ const getAllGameDetails = async () => {
             id: genId,
             name: capitalizeFirstLetter(genDetails.main_region.name),
             pokemon: (genDetails.pokemon_species ?? []).map(gi =>
-                String(gi.url.replace('https://pokeapi.co/api/v2/pokemon-species/', '').replace('/', '')).padStart(4, '0')
+                String(gi.url.replace(`${pokeApiUrl}/pokemon-species/`, '').replace('/', '')).padStart(4, '0')
             )
         };
 
