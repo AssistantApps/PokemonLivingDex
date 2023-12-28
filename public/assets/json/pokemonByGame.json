@@ -9207,7 +9207,7 @@
       {
         "id": "1018",
         "name": "Archaludon",
-        "image": "C:\\Development\\Projects\\AssistantApps\\Game\\poke-living-dex\\public\\assets\\img\\pokeball-loader.png",
+        "image": "/assets/img/pokeball-loader.png",
         "row": 30,
         "col": 28,
         "boxCol": 5,
@@ -9216,7 +9216,7 @@
       {
         "id": "1019",
         "name": "Hydrapple",
-        "image": "C:\\Development\\Projects\\AssistantApps\\Game\\poke-living-dex\\public\\assets\\img\\pokeball-loader.png",
+        "image": "/assets/img/pokeball-loader.png",
         "row": 30,
         "col": 29,
         "boxCol": 6,
@@ -9225,7 +9225,7 @@
       {
         "id": "1020",
         "name": "Gouging-Fire",
-        "image": "C:\\Development\\Projects\\AssistantApps\\Game\\poke-living-dex\\public\\assets\\img\\pokeball-loader.png",
+        "image": "/assets/img/pokeball-loader.png",
         "row": 30,
         "col": 30,
         "boxCol": 1,
@@ -9234,7 +9234,7 @@
       {
         "id": "1021",
         "name": "Raging-Bolt",
-        "image": "C:\\Development\\Projects\\AssistantApps\\Game\\poke-living-dex\\public\\assets\\img\\pokeball-loader.png",
+        "image": "/assets/img/pokeball-loader.png",
         "row": 30,
         "col": 31,
         "boxCol": 2,
@@ -9243,7 +9243,7 @@
       {
         "id": "1022",
         "name": "Iron-Boulder",
-        "image": "C:\\Development\\Projects\\AssistantApps\\Game\\poke-living-dex\\public\\assets\\img\\pokeball-loader.png",
+        "image": "/assets/img/pokeball-loader.png",
         "row": 30,
         "col": 32,
         "boxCol": 3,
@@ -9252,7 +9252,7 @@
       {
         "id": "1023",
         "name": "Iron-Crown",
-        "image": "C:\\Development\\Projects\\AssistantApps\\Game\\poke-living-dex\\public\\assets\\img\\pokeball-loader.png",
+        "image": "/assets/img/pokeball-loader.png",
         "row": 31,
         "col": 0,
         "boxCol": 4,
@@ -9261,7 +9261,7 @@
       {
         "id": "1024",
         "name": "Terapagos",
-        "image": "C:\\Development\\Projects\\AssistantApps\\Game\\poke-living-dex\\public\\assets\\img\\pokeball-loader.png",
+        "image": "/assets/img/pokeball-loader.png",
         "row": 31,
         "col": 1,
         "boxCol": 5,
@@ -9270,7 +9270,7 @@
       {
         "id": "1025",
         "name": "Pecharunt",
-        "image": "C:\\Development\\Projects\\AssistantApps\\Game\\poke-living-dex\\public\\assets\\img\\pokeball-loader.png",
+        "image": "/assets/img/pokeball-loader.png",
         "row": 31,
         "col": 2,
         "boxCol": 6,

@@ -3,7 +3,7 @@ const fs = require('fs');
 const { createCanvas, loadImage } = require('canvas');
 
 const pokemonSpriteSize = 50;
-const pokeApiUrl = 'https://staging.pokeapi.co/api/v2';
+const pokeApiUrl = 'https://pokeapi.co/api/v2';
 
 const capitalizeFirstLetter = (orig) => {
     if (orig.length == 0) return orig;
