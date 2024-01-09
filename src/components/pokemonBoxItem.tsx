@@ -8,6 +8,7 @@ import { IPokeDexByRegion } from "../contracts/pokedexByRegion";
 import { IPokemon } from "../contracts/pokemonByGame";
 import { preventDefault } from "../helper/documentHelper";
 import { PokemonSpriteImage } from "./pokemonSpriteImage";
+import { getBulbaUrl } from "../helper/stringHelper";
 
 interface IProps extends IPokemon {
     meta: IMeta;
@@ -78,11 +79,6 @@ export const PokemonBoxItem: Component<IProps> = (props: IProps) => {
         }
     });
 
-    const getBulbaUrl = (name: string) => {
-        const localName = name.replaceAll('-', '_');
-        return `https://bulbapedia.bulbagarden.net/wiki/${localName}`;
-    }
-
     const onClick = (id: string) => (e: any) => {
         preventDefault(e);
         if (props.mode == LivingDexMode.finding) {
@@ -91,7 +87,8 @@ export const PokemonBoxItem: Component<IProps> = (props: IProps) => {
         if (props.mode == LivingDexMode.tracking) {
             props.addOrRemoveFromOwned([id]);
         }
-        if (props.mode == LivingDexMode.latestGame) {
+        if (props.mode == LivingDexMode.latestGame ||
+            props.mode == LivingDexMode.firstGame) {
             props.showInfoBox(id);
         }
     }
@@ -104,13 +101,15 @@ export const PokemonBoxItem: Component<IProps> = (props: IProps) => {
         // if (props.mode == LivingDexMode.tracking) {
         //     props.addOrRemoveFromShiny([id]);
         // }
-        if (props.mode == LivingDexMode.latestGame) {
+        if (props.mode == LivingDexMode.latestGame ||
+            props.mode == LivingDexMode.firstGame) {
             window.open(getBulbaUrl(props.name), "_blank");
         }
     }
 
     return (
         <a
+            id={`pokemon-${props.id}`}
             href={getBulbaUrl(props.name)}
             onClick={onClick(props.id)}
             onContextMenu={onContextMenu(props.id)}

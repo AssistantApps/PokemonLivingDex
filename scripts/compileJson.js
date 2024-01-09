@@ -4,6 +4,12 @@ const { createCanvas, loadImage } = require('canvas');
 
 const pokemonSpriteSize = 50;
 const pokeApiUrl = 'https://pokeapi.co/api/v2';
+const pokeImgPath = '../public/assets/img/pokemon';
+const imageSource = {
+    disk: '_',
+    api: '+',
+};
+const logErrMsg = false;
 
 const capitalizeFirstLetter = (orig) => {
     if (orig.length == 0) return orig;
@@ -175,11 +181,14 @@ const orderPokemon = (pokemonLookup, ids) => {
 }
 
 const combinePokemonImagesIntoSingleSprite = async (combined, numCol) => {
-    const pokemonImgPath = path.join(__dirname, '../public/assets/img/pokemon');
+    const pokemonImgPath = path.join(__dirname, pokeImgPath);
     const outputImg = path.join(pokemonImgPath, '0000.png');
 
-    console.log('skipping the generation of a new single sprite');
-    return;
+    console.log('Sprites sources');
+    console.log(`\tDisk: ${imageSource.disk}`);
+    console.log(`\tAPI : ${imageSource.api}`);
+    // console.log('skipping the generation of a new single sprite');
+    // return;
 
     if (fs.existsSync(outputImg)) {
         fs.unlinkSync(outputImg)
@@ -203,8 +212,9 @@ const combinePokemonImagesIntoSingleSprite = async (combined, numCol) => {
                 pokemonDetail.image = path.join(__dirname, '../public/assets/img/pokeball-loader.png');
             }
             // await fs.writeFileSync(tempImg.replace('temp', pokemonDetail.id), buffer);
+
             try {
-                const image = await loadImage(pokemonDetail.image);
+                const image = await retry(3, (_) => fetchPokemonImage(pokemonDetail));
                 ctx.drawImage(
                     image,
                     pokemonDetail.col * pokemonSpriteSize,
@@ -214,17 +224,73 @@ const combinePokemonImagesIntoSingleSprite = async (combined, numCol) => {
                 );
             }
             catch (e) {
-                console.error(`Unable to fetch sprite for ${pokemonDetail.image}`, e);
+                console.error(`Unable to fetch sprite for ${pokemonDetail.image}`, logErrMsg ? e : null);
             }
         }
+        console.log('');
+        console.log('');
     }
 
     try {
-        const buffer = canvas.toBuffer('image/png');
-        fs.writeFileSync(outputImg, buffer);
+        writeImgToDisk(outputImg, canvas);
         console.log('spritemap created');
     } catch (e) {
-        console.error('Unable to write single aprite', e);
+        console.error('Unable to write complete sprite', e);
+    }
+}
+
+const fetchPokemonImage = async (pokemonDetail) => {
+    const pokemonImgPath = path.join(__dirname, pokeImgPath);
+    const outputImg = path.join(pokemonImgPath, `${pokemonDetail.id}.png`);
+
+    if (fs.existsSync(outputImg)) {
+        const localImage = await loadImage(outputImg);
+        process.stdout.write(imageSource.disk);
+        return localImage;
+    }
+
+    const canvas = createCanvas(pokemonSpriteSize, pokemonSpriteSize);
+    const ctx = canvas.getContext('2d');
+    const imgFromApi = await loadImage(pokemonDetail.image);
+    ctx.drawImage(
+        imgFromApi,
+        0,
+        0,
+        pokemonSpriteSize,
+        pokemonSpriteSize
+    );
+    process.stdout.write(imageSource.api);
+
+    try {
+        writeImgToDisk(outputImg, canvas);
+    } catch (e) {
+        console.error('Unable to write single sprite', e);
+    }
+
+    return imgFromApi;
+}
+
+const writeImgToDisk = async (outputImg, canvas) => {
+    if (fs.existsSync(outputImg)) fs.unlinkSync(outputImg);
+    const buffer = canvas.toBuffer('image/png');
+    fs.writeFileSync(outputImg, buffer);
+}
+
+const delay = (t, val) => new Promise(resolve => setTimeout(resolve, t, val));
+
+const retry = async (maxRetries, asyncFn) => {
+    try {
+        const result = await asyncFn(maxRetries);
+        return result;
+    }
+    catch (err) {
+        await delay(1000);
+        console.error(`retry func failed, count: ${maxRetries}`, logErrMsg ? err : null);
+
+        if (maxRetries <= 0) {
+            throw err;
+        }
+        await retry(maxRetries - 1, asyncFn);
     }
 }
 

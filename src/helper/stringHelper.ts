@@ -22,3 +22,10 @@ export const addSpacesForEnum = (orig: string) => {
     }
     return result;
 }
+
+export const getBulbaUrl = (name?: string) => {
+    if (name == null) return 'https://bulbapedia.bulbagarden.net';
+
+    const localName = name.replaceAll('-', '_');
+    return `https://bulbapedia.bulbagarden.net/wiki/${localName}`;
+}

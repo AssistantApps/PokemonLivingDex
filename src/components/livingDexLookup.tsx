@@ -11,7 +11,7 @@ import { IPokemon } from '../contracts/pokemonByGame';
 import { IPokemonInBox } from '../contracts/pokemonInBox';
 import { timeout } from '../helper/asyncHelper';
 import { initSticky, scrollIdIntoView } from '../helper/documentHelper';
-import { capitalizeFirstLetter } from '../helper/stringHelper';
+import { capitalizeFirstLetter, getBulbaUrl } from '../helper/stringHelper';
 import { anyObject } from '../helper/typescriptHacks';
 import { getGames, getOwned, getShiny } from '../services/store/sections/pokedexState';
 import { getStateService } from '../services/store/stateService';
@@ -150,10 +150,8 @@ export const LivingDexLookup: Component = () => {
 
         if (pokeDetails == null) return;
 
-        if (mode() != LivingDexMode.tracking) {
-            setSelectedPokemon(pokeDetails.value);
-            setSelectedPokemonName(pokeDetails.title);
-        }
+        setSelectedPokemon(pokeDetails.value);
+        setSelectedPokemonName(pokeDetails.title);
 
         setInfoBoxSelectedPokedexs(pokeDexi);
         onOpen();
@@ -337,7 +335,7 @@ export const LivingDexLookup: Component = () => {
                                     <Show when={infoBoxPokedexs().length == 0}>
                                         <Text>This might be an event only pokemon 🤷‍♂️</Text>
                                     </Show>
-                                    <Button as={Link} href={`https://bulbapedia.bulbagarden.net/wiki/${selectedPokemonName()}`} title="View on Bulbapedia" target="_blank" rel="noopener noreferrer">
+                                    <Button as={Link} href={getBulbaUrl(selectedPokemonName())} title="View on Bulbapedia" target="_blank" rel="noopener noreferrer">
                                         View on Bulbapedia
                                     </Button>
                                 </VStack>
