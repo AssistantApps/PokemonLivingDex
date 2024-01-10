@@ -184,11 +184,12 @@ const combinePokemonImagesIntoSingleSprite = async (combined, numCol) => {
     const pokemonImgPath = path.join(__dirname, pokeImgPath);
     const outputImg = path.join(pokemonImgPath, '0000.png');
 
+    console.log('skipping the generation of a new single sprite');
+    return;
+
     console.log('Sprites sources');
     console.log(`\tDisk: ${imageSource.disk}`);
     console.log(`\tAPI : ${imageSource.api}`);
-    // console.log('skipping the generation of a new single sprite');
-    // return;
 
     if (fs.existsSync(outputImg)) {
         fs.unlinkSync(outputImg)
